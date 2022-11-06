@@ -67,7 +67,7 @@ const movieSchema = new mongoose.Schema({
     required: true,
     minlength: 1,
   },
-  nameEn: {
+  nameEN: {
     type: String,
     required: true,
     minlength: 1,
