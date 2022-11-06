@@ -8,11 +8,10 @@ const login = celebrate({
     email: Joi.string().required().email(),
     password: Joi.string().required(),
     name: Joi.string().min(2).max(30),
-    about: Joi.string().min(2).max(30),
-    avatar: Joi.string().regex(regexImageLink),
   }),
 });
 
+// использовать на случай роутера users/:userId
 const getUser = celebrate({
   params: Joi.object().keys({
     userId: Joi.objectId(),
@@ -22,29 +21,32 @@ const getUser = celebrate({
 const updateUser = celebrate({
   body: Joi.object().keys({
     name: Joi.string().min(2).max(30),
-    about: Joi.string().min(2).max(30),
+    email: Joi.string().email(),
   }),
 });
 
-const updateAvatar = celebrate({
+const createMovie = celebrate({
   body: Joi.object().keys({
-    avatar: Joi.string().regex(regexImageLink),
+    country: Joi.string().required().min(2),
+    director: Joi.string().required().min(2),
+    duration: Joi.number().required(),
+    year: Joi.string().required(),
+    description: Joi.string().required().min(2),
+    image: Joi.string().required().regex(regexImageLink),
+    trailerLink: Joi.string().required().regex(regexLink),
+    thumbnail: Joi.string().required().regex(regexImageLink),
+    movieId: Joi.number().required(),
+    nameRU: Joi.string().required().min(1),
+    nameEN: Joi.string().required().min(1),
   }),
 });
 
-const createCard = celebrate({
-  body: Joi.object().keys({
-    name: Joi.string().required().min(2).max(30),
-    link: Joi.string().required().regex(regexLink),
-  }),
-});
-
-const checkIdCard = celebrate({
+const checkIdMovie = celebrate({
   params: Joi.object().keys({
-    cardId: Joi.objectId(),
+    _id: Joi.objectId(),
   }),
 });
 
 module.exports = {
-  login, getUser, updateUser, updateAvatar, createCard, checkIdCard,
+  login, getUser, updateUser, createMovie, checkIdMovie,
 };

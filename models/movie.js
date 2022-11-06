@@ -7,20 +7,18 @@ const movieSchema = new mongoose.Schema({
     type: String,
     required: true,
     minlength: 2,
-    maxlength: 30,
   },
   director: {
     type: String,
     required: true,
     minlength: 2,
-    maxlength: 30,
   },
   duration: {
     type: Number,
     required: true,
   },
   year: {
-    type: Number,
+    type: String,
     required: true,
   },
   description: {
@@ -31,6 +29,7 @@ const movieSchema = new mongoose.Schema({
   image: {
     type: String,
     default: '',
+    required: true,
     validate: {
       validator: (image) => regexImageLink.test(image),
       message: 'Некорректный формат ссылки на картинку фильма',
@@ -39,6 +38,7 @@ const movieSchema = new mongoose.Schema({
   trailerLink: {
     type: String,
     default: '',
+    required: true,
     validate: {
       validator: (link) => regexLink.test(link),
       message: 'Некорректный формат ссылки на трейлер фильма',
@@ -47,6 +47,7 @@ const movieSchema = new mongoose.Schema({
   thumbnail: {
     type: String,
     default: '',
+    required: true,
     validate: {
       validator: (image) => regexImageLink.test(image),
       message: 'Некорректный формат ссылки на мини-картинку фильма',
@@ -58,9 +59,7 @@ const movieSchema = new mongoose.Schema({
     required: true,
   },
   movieId: {
-    type: mongoose.SchemaTypes.ObjectId,
-    // На данный момент неизвестно с какой схемой связана
-    // ref: 'user',
+    type: Number,
     required: true,
   },
   nameRU: {

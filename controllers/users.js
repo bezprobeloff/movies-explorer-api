@@ -23,12 +23,6 @@ const login = (req, res, next) => {
     }).catch((err) => next(new UnauthorizedError(err.message)));
 };
 
-const getUsers = (req, res, next) => {
-  User.find({})
-    .then((users) => res.send(users))
-    .catch((next));
-};
-
 const getUser = (req, res, next) => {
   const userId = req.params.userId ? req.params.userId : req.user._id;
   User.findById(userId)
@@ -51,13 +45,13 @@ const getUser = (req, res, next) => {
 
 const createUser = (req, res, next) => {
   const {
-    name, about, avatar, email, password,
+    name, email, password,
   } = req.body;
 
   bcrypt.hash(password, 10)
     .then((hash) => User.create(
       {
-        name, about, avatar, email, password: hash,
+        name, email, password: hash,
       },
     ))
     .then((user) => {
@@ -77,11 +71,11 @@ const createUser = (req, res, next) => {
 };
 
 const updateUser = (req, res, next) => {
-  const { name, about } = req.body;
+  const { name, email } = req.body;
 
   User.findByIdAndUpdate(
     req.user._id,
-    { name, about },
+    { name, email },
     {
       new: true,
       runValidators: true,
@@ -105,35 +99,6 @@ const updateUser = (req, res, next) => {
     });
 };
 
-const updateAvatar = (req, res, next) => {
-  const { avatar } = req.body;
-
-  User.findByIdAndUpdate(
-    req.user._id,
-    { avatar },
-    {
-      new: true,
-      runValidators: true,
-    },
-  )
-    .then((user) => {
-      if (!user) {
-        throw new NotFoundError(
-          'Пользователь по указанному id не найден.',
-        );
-      }
-
-      return res.send(user);
-    })
-    .catch((err) => {
-      if (err.name === 'ValidationError') {
-        next(new ValidationError('Переданы некорректные данные при обновлении аватара.'));
-      } else {
-        next(err);
-      }
-    });
-};
-
 module.exports = {
-  login, getUsers, getUser, createUser, updateUser, updateAvatar,
+  login, getUser, createUser, updateUser,
 };
