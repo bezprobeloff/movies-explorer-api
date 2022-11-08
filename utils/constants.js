@@ -4,8 +4,8 @@ const regexImageLink = /^https?:\/\/(?:[a-z0-9\\-]+\.)+[a-z]{2,6}(?:\/[^/#?]+)+\
 const regexLink = /^https?:\/\/([\w_-]+(?:(?:\.[\w_-]+)+))([\w.,@?^=%&:\\/~+#-]*[\w@?^=%&\\/~+#-])/im;
 // Массив доменов, с которых разрешены кросс-доменные запросы
 const allowedCors = [
-  'https://mesto.bezprobeloff.nomoredomains.icu',
-  'http://api.mesto.bezprobeloff.nomoredomains.icu',
+  'https://movies.bezprobeloff.nomoredomains.icu',
+  'https://api.movies.bezprobeloff.nomoredomains.icu',
   'https://localhost:3000',
   'http://localhost:3000',
 ];
