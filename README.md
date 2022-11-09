@@ -1,2 +1,5 @@
 # movies-explorer-api
-Дипломная работа Movies (backend)
+Movies (backend)
+
+Ссылка на деплой: https://api.movies.bezprobeloff.nomoredomains.icu/
+IP сервера: IP 158.160.9.114
