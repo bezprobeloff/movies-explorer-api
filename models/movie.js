@@ -1,6 +1,5 @@
 const mongoose = require('mongoose');
-const { regexLink } = require('../utils/constants');
-const { regexImageLink } = require('../utils/constants');
+const isUrl = require('validator/lib/isURL');
 
 const movieSchema = new mongoose.Schema({
   country: {
@@ -31,7 +30,7 @@ const movieSchema = new mongoose.Schema({
     default: '',
     required: true,
     validate: {
-      validator: (image) => regexImageLink.test(image),
+      validator: (image) => isUrl(image),
       message: 'Некорректный формат ссылки на картинку фильма',
     },
   },
@@ -40,7 +39,7 @@ const movieSchema = new mongoose.Schema({
     default: '',
     required: true,
     validate: {
-      validator: (link) => regexLink.test(link),
+      validator: (link) => isUrl(link),
       message: 'Некорректный формат ссылки на трейлер фильма',
     },
   },
@@ -49,7 +48,7 @@ const movieSchema = new mongoose.Schema({
     default: '',
     required: true,
     validate: {
-      validator: (image) => regexImageLink.test(image),
+      validator: (image) => isUrl(image),
       message: 'Некорректный формат ссылки на мини-картинку фильма',
     },
   },

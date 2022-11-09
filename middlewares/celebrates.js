@@ -1,6 +1,5 @@
 const { celebrate, Joi } = require('celebrate');
 Joi.objectId = require('joi-objectid')(Joi);
-const { regexImageLink, regexLink } = require('../utils/constants');
 
 // его можно использовать и для создания юзера
 const login = celebrate({
@@ -32,9 +31,9 @@ const createMovie = celebrate({
     duration: Joi.number().required(),
     year: Joi.string().required(),
     description: Joi.string().required().min(2),
-    image: Joi.string().required().regex(regexImageLink),
-    trailerLink: Joi.string().required().regex(regexLink),
-    thumbnail: Joi.string().required().regex(regexImageLink),
+    image: Joi.string().required().uri(),
+    trailerLink: Joi.string().required().uri(),
+    thumbnail: Joi.string().required().uri(),
     movieId: Joi.number().required(),
     nameRU: Joi.string().required().min(1),
     nameEN: Joi.string().required().min(1),
