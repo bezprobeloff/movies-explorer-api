@@ -6,7 +6,7 @@ require('dotenv').config();
 
 const { PORT = 3000 } = process.env;
 const app = express();
-const { PATH_FILMSDB, PATH_FRONTEND } = require('./utils/constants');
+const { PATH_MOVIESDB, PATH_FRONTEND } = require('./utils/constants');
 const { requestLogger, errorLogger } = require('./middlewares/logger');
 const { corsPolicy } = require('./middlewares/corsPolicy');
 const centralError = require('./middlewares/centralError');
@@ -15,7 +15,7 @@ const routes = require('./routes');
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-mongoose.connect(PATH_FILMSDB, {});
+mongoose.connect(PATH_MOVIESDB, {});
 
 app.use(requestLogger);
 
@@ -30,7 +30,4 @@ app.use(errors());
 // обрабатываем централизованно ошибки
 app.use(centralError);
 
-app.listen(PORT, () => {
-  // eslint-disable-next-line no-console
-  console.log(`App listening on port ${PORT}`);
-});
+app.listen(PORT);

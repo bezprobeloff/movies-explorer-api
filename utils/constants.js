@@ -10,7 +10,7 @@ const allowedCors = [
   'http://localhost:3000',
 ];
 const DEFAULT_ALLOWED_METHODS = 'GET,HEAD,PUT,PATCH,POST,DELETE';
-const PATH_FILMSDB = 'mongodb://localhost:27017/bitfilmsdb';
+const PATH_MOVIESDB = 'mongodb://localhost:27017/moviesdb';
 const PATH_FRONTEND = path.join(__dirname, '../../frontend');
 
 module.exports = {
@@ -18,6 +18,6 @@ module.exports = {
   regexLink,
   allowedCors,
   DEFAULT_ALLOWED_METHODS,
-  PATH_FILMSDB,
+  PATH_MOVIESDB,
   PATH_FRONTEND,
 };
