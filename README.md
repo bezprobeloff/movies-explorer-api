@@ -7,9 +7,7 @@
 
 ## Обзор
 
-Проект бекенд для сайта Movies https://movies.bezprobeloff.nomoredomains.icu/  
 Исходный код фронтенда  на GitHub -  **[Movies (frontend)](https://github.com/bezprobeloff/movies-explorer-frontend)**  
-Ссылка на __API__ - https://api.movies.bezprobeloff.nomoredomains.icu/ 
 
 ## Роуты
 
