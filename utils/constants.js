@@ -2,8 +2,10 @@ const path = require('path');
 
 // Массив доменов, с которых разрешены кросс-доменные запросы
 const allowedCors = [
-  'https://movies.bezprobeloff.nomoredomains.icu',
-  'https://api.movies.bezprobeloff.nomoredomains.icu',
+  'http://movies.bezprobeloff.ru',
+  'http://api.movies.bezprobeloff.ru',
+  'https://movies.bezprobeloff.ru',
+  'https://api.movies.bezprobeloff.ru',
   'https://localhost:3000',
   'http://localhost:3000',
 ];
